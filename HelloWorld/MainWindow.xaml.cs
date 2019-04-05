@@ -32,7 +32,7 @@ namespace HelloWorld
 
         private void UxNamePassword_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!uxName.Text.Equals(string.Empty) && !uxPassword.Text.Equals(string.Empty))
+            if (!uxName.Text.Trim().Equals(string.Empty) && !uxPassword.Text.Trim().Equals(string.Empty))
             {
                 uxSubmit.IsEnabled = true;
             }
