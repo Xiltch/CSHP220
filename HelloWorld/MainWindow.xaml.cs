@@ -27,7 +27,19 @@ namespace HelloWorld
 
         private void UxSubmit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Submitting password: " + uxPassword.Password);
+            MessageBox.Show("Submitting password: " + uxPassword.Text);
+        }
+
+        private void UxNamePassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!uxName.Text.Equals(string.Empty) && !uxPassword.Text.Equals(string.Empty))
+            {
+                uxSubmit.IsEnabled = true;
+            }
+            else
+            {
+                uxSubmit.IsEnabled = false;
+            }
         }
     }
 }
