@@ -23,6 +23,16 @@ namespace HelloWorld
         public MainWindow()
         {
             InitializeComponent();
+
+            // add additional click handler to log to the console when the submit button is clicked
+            uxSubmit.Click += (object sender, RoutedEventArgs e) => { Console.WriteLine("Button Clicked"); };
+
+            WindowState = WindowState.Maximized;
+        }
+
+        private void UxSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Submitting password: " + uxPassword.Password);
         }
     }
 }
