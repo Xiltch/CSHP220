@@ -20,9 +20,19 @@ namespace HelloWorld
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private Models.User user = new Models.User();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public override void EndInit()
+        {
+            base.EndInit();
+            uxName.DataContext = user;
+            uxNameError.DataContext = user;
         }
 
         private void UxSubmit_Click(object sender, RoutedEventArgs e)
