@@ -7,19 +7,30 @@
         mc:Ignorable="d"
         Title="MainWindow" WindowState="Maximized" Height="350" Width="525">
 
-    <StackPanel>
-        
+    <StackPanel x:Name="uxContainer">
+
         <TextBlock>Enter Name:</TextBlock>
 
-        <TextBox x:Name="uxName" 
-        Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+        <TextBox 
+            x:Name="uxName" 
+            Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
         </TextBox>
+        <Label 
+            x:Name="uxNameError" 
+            Content="{Binding NameError, UpdateSourceTrigger=PropertyChanged}">
+        </Label>
 
-        <Label x:Name="uxNameError" 
-            Content="{Binding NameError, UpdateSourceTrigger=PropertyChanged}"></Label>
-        
         <TextBlock>Enter Password:</TextBlock>
-        <TextBox x:Name="uxPassword" TextChanged="UxNamePassword_TextChanged"></TextBox>
+        <TextBox 
+            x:Name="uxPassword" 
+            TextChanged="UxNamePassword_TextChanged" 
+            Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+        </TextBox>
+        <Label
+            x:Name="uxPasswordError" 
+            Content="{Binding PasswordError, UpdateSourceTrigger=PropertyChanged}">
+        </Label>
+
         <Button x:Name="uxSubmit" Click="UxSubmit_Click" IsEnabled="False">Submit</Button>
         <Button>
             <StackPanel Orientation="Horizontal">
@@ -27,14 +38,19 @@
                 <TextBlock Text="Thumbs Up" VerticalAlignment="Center" Margin="10,0,0,0" />
             </StackPanel>
         </Button>
+        
         <Separator Height="25" Margin="0"/>
+        
         <Button Height="50" Width="150">
             <StackPanel Height="50" Width="150">
                 <CheckBox Content="Check Me" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </StackPanel>
         </Button>
+        
         <Separator Height="25" Margin="0"/>
+        
         <TextBox x:Name="uxInput" />
         <Label Content="{Binding Text, ElementName=uxInput}" />
+        
     </StackPanel>
 </Window>

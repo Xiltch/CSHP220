@@ -31,8 +31,7 @@ namespace HelloWorld
         public override void EndInit()
         {
             base.EndInit();
-            uxName.DataContext = user;
-            uxNameError.DataContext = user;
+            uxContainer.DataContext = user;
         }
 
         private void UxSubmit_Click(object sender, RoutedEventArgs e)

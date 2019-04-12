@@ -6,6 +6,7 @@ namespace HelloWorld.Models
         private string name = string.Empty;
         private string password = string.Empty;
         private string nameError;
+        private string passwordError;
 
         public string NameError
         {
@@ -19,6 +20,22 @@ namespace HelloWorld.Models
                 {
                     nameError = value;
                     OnPropertyChanged("NameError");
+                }
+            }
+        }
+
+        public string PasswordError
+        {
+            get
+            {
+                return passwordError;
+            }
+            set
+            {
+                if (passwordError != value)
+                {
+                    passwordError = value;
+                    OnPropertyChanged("PasswordError");
                 }
             }
         }
@@ -70,11 +87,12 @@ namespace HelloWorld.Models
         {
             get
             {
-                NameError = "";
+                
                 switch (columnName)
                 {
                     case "Name":
                         {
+                            NameError = "";
                             if (string.IsNullOrEmpty(Name))
                             {
                                 NameError = "Name cannot be empty.";
@@ -83,10 +101,20 @@ namespace HelloWorld.Models
                             {
                                 NameError = "Name cannot be longer than 12 characters.";
                             }
-                            break;
+                            return NameError;
+                        }
+
+                    case "Password":
+                        {
+                            PasswordError = "";
+                            if (string.IsNullOrEmpty(Password))
+                            {
+                                PasswordError = "Password cannot be empty.";
+                            }
+                            return PasswordError;
                         }
                 }
-                return NameError;
+                return "";
             }
         }
 
