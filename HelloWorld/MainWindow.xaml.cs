@@ -34,9 +34,14 @@ namespace HelloWorld
             uxContainer.DataContext = user;
         }
 
-        private void UxSubmit_Click(object sender, RoutedEventArgs e)
+        private void uxSubmit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Submitting password: " + uxPassword.Text);
+            MessageBox.Show("Submitting password:" + uxPassword.Text);
+
+            var window = new SecondWindow();
+            Application.Current.MainWindow = window;
+            Close();
+            window.Show();
         }
 
         private void UxNamePassword_TextChanged(object sender, TextChangedEventArgs e)
