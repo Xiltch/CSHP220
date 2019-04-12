@@ -12,4 +12,9 @@
             <TextBlock Text="Thumbs Up" />
         </StackPanel>
     </Button>
+    <Button>
+        <StackPanel>
+            <CheckBox>Check Me</CheckBox>
+        </StackPanel>
+    </Button>
 </Window>

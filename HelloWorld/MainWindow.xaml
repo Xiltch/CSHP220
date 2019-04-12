@@ -20,5 +20,11 @@
                 <TextBlock Text="Thumbs Up" VerticalAlignment="Center" Margin="10,0,0,0" />
             </StackPanel>
         </Button>
+        <Separator Height="50" Margin="0"/>
+        <Button Height="50" Width="150">
+            <StackPanel Height="50" Width="150">
+                <CheckBox Content="Check Me" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
     </StackPanel>
 </Window>
