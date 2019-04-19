@@ -157,6 +157,9 @@
     <Resource Include="images\ic_thumb_up_black_24dp_2x.png" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Sample.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Sample.edmx</DependentUpon>
@@ -167,9 +170,6 @@
       <DependentUpon>Sample.edmx</DependentUpon>
       <LastGenOutput>Sample.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
