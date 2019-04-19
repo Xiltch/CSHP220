@@ -66,6 +66,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Sample.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sample.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sample.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sample.tt</DependentUpon>
+    </Compile>
     <Compile Include="Sample.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -73,6 +83,9 @@
     </Compile>
     <Compile Include="SecondWindow.xaml.cs">
       <DependentUpon>SecondWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>Sample.tt</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -139,7 +152,17 @@
   <ItemGroup>
     <Content Include="Sample.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Sample.edmx</DependentUpon>
+      <LastGenOutput>Sample.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Sample.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Sample.edmx</DependentUpon>
+      <LastGenOutput>Sample.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
