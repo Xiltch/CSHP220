@@ -66,6 +66,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ComboWindow.xaml.cs">
+      <DependentUpon>ComboWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sample.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,6 +90,10 @@
     <Compile Include="User.cs">
       <DependentUpon>Sample.tt</DependentUpon>
     </Compile>
+    <Page Include="ComboWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
