@@ -13,9 +13,13 @@
             </StatusBarItem>
             <Separator />
             <StatusBarItem>
-                <ProgressBar x:Name="uxProgressBar" Value="50" Width="90" Height="16"></ProgressBar>
+                <ProgressBar x:Name="uxProgressBar" Value="0" Width="90" Height="16"></ProgressBar>
             </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock x:Name="uxProgressPercent"></TextBlock>
+            </StatusBarItem>
+
         </StatusBar>
-        <TextBox x:Name="uxTextEditor" MaxLength="100" AcceptsReturn="true" SelectionChanged="uxTextEditor_SelectionChanged"></TextBox>
+        <TextBox x:Name="uxTextEditor" MaxLength="40" AcceptsReturn="true" SelectionChanged="uxTextEditor_SelectionChanged"></TextBox>
     </DockPanel>
 </Window>

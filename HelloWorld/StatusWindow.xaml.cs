@@ -24,7 +24,7 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            uxProgressBar.Maximum = 100; // Set the maximum
+            uxProgressBar.Maximum = 40; // Set the maximum
         }
 
         private void uxTextEditor_SelectionChanged(object sender, RoutedEventArgs e)
@@ -35,6 +35,8 @@ namespace HelloWorld
             uxStatus.Text = "Line " + (row + 1) + ", Char " + (col + 1);
 
             uxProgressBar.Value = uxTextEditor.Text.Length; // Set the progressbar
+            double percentage = Math.Round( uxTextEditor.Text.Length / uxProgressBar.Maximum * 100,0);
+            uxProgressPercent.Text = $"{percentage}%";
         }
 
     }
