@@ -12,7 +12,12 @@
     <StackPanel>
         <Menu>
             <MenuItem Header="_File">
-                <MenuItem Header="_New" Click="OnNew_Click"/>
+                <MenuItem Header="_New" Click="OnNew_Click">
+                    <MenuItem.Icon>
+                        <Image Source="/HelloWorld;component/images/wpf-menus-new.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                    
                 <MenuItem Header="_Open"/>
                 <Separator/>
                 <MenuItem Header="E_xit" Click="OnClose_Click"/>
@@ -30,5 +35,16 @@
                 </ContextMenu>
             </Button.ContextMenu>
         </Button>
+
     </StackPanel>
+
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="Window Menu item 1" />
+            <MenuItem Header="Window Menu item 2" />
+            <Separator />
+            <MenuItem Header="Window Menu item 3" />
+        </ContextMenu>
+    </Window.ContextMenu>
+
 </Window>
