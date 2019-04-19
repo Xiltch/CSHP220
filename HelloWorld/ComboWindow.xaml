@@ -8,7 +8,13 @@
         Title="ComboWindow" Height="450" Width="800">
     <StackPanel>
 
-        <ListBox x:Name="uxListBox" Height="75" DisplayMemberPath="UserName" ItemsSource="{Binding}" SelectionChanged="uxComboBox_SelectionChanged"/>
+        <ListBox x:Name="uxListBox" Height="75" SelectionChanged="uxComboBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding UserName}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
         <Grid x:Name="uxGrid">
             <Grid.RowDefinitions>

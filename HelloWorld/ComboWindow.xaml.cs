@@ -26,7 +26,6 @@ namespace HelloWorld
 
             var sample = new SampleEntities();
             sample.Users.Load();
-            uxComboBox.ItemsSource = sample.Users.Local;
             uxListBox.ItemsSource = sample.Users.Local;
         }
 
