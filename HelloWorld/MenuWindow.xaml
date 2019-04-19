@@ -30,6 +30,7 @@
                 <Button Content="New" Click="OnNew_Click"/>
                 <Button Content="Copy"/>
                 <Button Content="Paste"/>
+                <Button Content="Close" Click="OnClose_Click"/>
             </ToolBar>
             <ToolBar>
                 <Label>Font size:</Label>
