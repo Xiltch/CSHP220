@@ -11,12 +11,14 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn 
-                        DisplayMemberBinding="{Binding Path=Name}" 
-                        Header="Name">
+                        DisplayMemberBinding="{Binding Path=Name}">
+                        <GridViewColumnHeader x:Name="uxNameHeader" Content="Name" Click="UxNameHeader_Click"></GridViewColumnHeader>
                     </GridViewColumn>
                     <GridViewColumn 
-                        DisplayMemberBinding="{Binding Path=Password}" 
-                        Header="Password">
+                        DisplayMemberBinding="{Binding Path=Password}">
+                        <GridViewColumnHeader x:Name="uxPasswordHeader" Content="Password" Click="UxPasswordHeader_Click">
+                            
+                        </GridViewColumnHeader>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>

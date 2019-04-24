@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,11 +26,25 @@ namespace HelloWorld
 
             var users = new List<Models.User>();
 
-            users.Add(new Models.User { Name = "Dave", Password = "DavePwd" });
-            users.Add(new Models.User { Name = "Steve", Password = "StevePwd" });
-            users.Add(new Models.User { Name = "Lisa", Password = "LisaPwd" });
+            users.Add(new Models.User { Name = "Dave", Password = "1DavePwd" });
+            users.Add(new Models.User { Name = "Steve", Password = "2StevePwd" });
+            users.Add(new Models.User { Name = "Lisa", Password = "3LisaPwd" });
 
             uxList.ItemsSource = users;
+        }
+
+        private void UxPasswordHeader_Click(object sender, RoutedEventArgs e)
+        {
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(uxList.ItemsSource);
+            view.SortDescriptions.Clear();
+            view.SortDescriptions.Add(new SortDescription("Password", ListSortDirection.Ascending));
+        }
+
+        private void UxNameHeader_Click(object sender, RoutedEventArgs e)
+        {
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(uxList.ItemsSource);
+            view.SortDescriptions.Clear();
+            view.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
         }
     }
 }
