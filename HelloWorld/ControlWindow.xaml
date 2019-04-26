@@ -25,9 +25,8 @@
         <RadioButton Content="Option A" GroupName="two"></RadioButton>
         <RadioButton Content="Option B" GroupName="two"></RadioButton>
 
-        <Slider x:Name="uxSlider" ValueChanged="uxSlider_ValueChanged"
-           Minimum="0" Maximum="100" TickPlacement="BottomRight" TickFrequency="5" />
+        <Slider x:Name="uxSlider" Minimum="0" Maximum="100" TickPlacement="BottomRight" TickFrequency="5" />
 
-        <ProgressBar x:Name="uxProgressBar" Height="16"></ProgressBar>
+        <ProgressBar x:Name="uxProgressBar" Value="{Binding ElementName=uxSlider,Path=Value}" Height="16" />
     </StackPanel>
 </Window>
