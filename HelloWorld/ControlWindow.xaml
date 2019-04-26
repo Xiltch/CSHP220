@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:HelloWorld"
         mc:Ignorable="d"
         Title="ControlWindow" Height="450" Width="800">
+
     <StackPanel>
-        <CheckBox x:Name="uxLocal" Content="Local" Checked="uxLocal_Common" Unchecked="uxLocal_Common">
+        <CheckBox x:Name="uxLocal" ToolTip="Click me for Local" Content="Local" Checked="uxLocal_Common" Unchecked="uxLocal_Common">
         </CheckBox>
-        <CheckBox x:Name="uxLocal2" Content="Local 2" Checked="uxLocal_Common" Unchecked="uxLocal_Common">
+        <CheckBox x:Name="uxLocal2" ToolTip="Click me for Local 2" Content="Local 2" Checked="uxLocal_Common" Unchecked="uxLocal_Common">
         </CheckBox>
         <TextBlock>
             <Hyperlink x:Name="uxNavigator" NavigateUri="http://www.google.com" 
@@ -19,14 +20,32 @@
                         RequestNavigate="uxNavigator_RequestNavigate">Microsoft.com</Hyperlink>
         </TextBlock>
 
-        <RadioButton Content="Option 1" GroupName="one"></RadioButton>
-        <RadioButton Content="Option 2" GroupName="one"></RadioButton>
+        <Border BorderBrush="Black" BorderThickness="1" Height="40">
+            <StackPanel>
+                <RadioButton Content="Option 1" GroupName="one"></RadioButton>
+                <RadioButton Content="Option 2" GroupName="one"></RadioButton>
+            </StackPanel>
+        </Border>
 
-        <RadioButton Content="Option A" GroupName="two"></RadioButton>
-        <RadioButton Content="Option B" GroupName="two"></RadioButton>
+        <Border BorderBrush="Black" BorderThickness="1" Height="40">
+            <StackPanel>
+                <RadioButton Content="Option A" GroupName="two"></RadioButton>
+                <RadioButton Content="Option B" GroupName="two"></RadioButton>
+            </StackPanel>
+        </Border>
 
         <Slider x:Name="uxSlider" Minimum="0" Maximum="100" TickPlacement="BottomRight" TickFrequency="5" />
 
         <ProgressBar x:Name="uxProgressBar" Value="{Binding ElementName=uxSlider,Path=Value}" Height="16" />
+
+        <CheckBox>
+            <TextBlock>
+                Enable feature <Run Foreground="Red" FontWeight="Bold">Red </Run>
+                <Run Foreground="Green" FontWeight="Bold">Green </Run>
+                <Run Foreground="Blue" FontWeight="Bold" FontStyle="Italic">Blue</Run>
+            </TextBlock>
+        </CheckBox>
+
+
     </StackPanel>
 </Window>
