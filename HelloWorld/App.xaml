@@ -5,14 +5,11 @@
                 xmlns:local="clr-namespace:HelloWorld"
                 StartupUri="ResourceWindow.xaml">
     <Application.Resources>
-        <clr:String x:Key="ApplicationName">My Hello World Application</clr:String>
-
-        <Style TargetType="TextBox" x:Key="Input">
-            <Setter Property="FontSize" Value="22"/>
-            <Setter Property="Background" Value="Pink"/>
-            <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Margin" Value="0,3,10,0"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Dictionary1.xaml"/>
+                <ResourceDictionary Source="Dictionary2.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
