@@ -10,4 +10,13 @@
         <Setter Property="Margin" Value="0,3,10,0"/>
     </Style>
 
+    <Style TargetType="TextBox" x:Key="Password">
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="Background" Value="Pink"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="0,3,10,0"/>
+        
+    </Style>
+
 </ResourceDictionary>

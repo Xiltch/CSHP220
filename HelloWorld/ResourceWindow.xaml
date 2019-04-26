@@ -20,7 +20,7 @@
 
     <StackPanel>
         <TextBox x:Name="uxName" Style="{StaticResource Input}" />
-        <TextBox x:Name="uxPassword" />
+        <TextBox x:Name="uxPassword" Style="{StaticResource Password}"/>
 
         <DockPanel>
             <DockPanel.Resources>
