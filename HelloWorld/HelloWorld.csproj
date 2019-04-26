@@ -81,6 +81,12 @@
     <Compile Include="ResourceWindow.xaml.cs">
       <DependentUpon>ResourceWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RGBControl.xaml.cs">
+      <DependentUpon>RGBControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RGBWindow.xaml.cs">
+      <DependentUpon>RGBWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sample.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -146,6 +152,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ResourceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RGBControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RGBWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
