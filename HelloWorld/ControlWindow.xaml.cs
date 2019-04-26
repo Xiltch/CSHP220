@@ -25,26 +25,16 @@ namespace HelloWorld
             InitializeComponent();
         }
 
-        private void uxLocal_Checked(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Local Checked");
-        }
-
-        private void uxLocal_Unchecked(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Local Unchecked");
-        }
-
         private void uxLocal_Common(object sender, RoutedEventArgs e)
         {
             if (sender is CheckBox control)
             {
                 if (control.IsChecked == true)
                 {
-                    MessageBox.Show($"{control.Content} - Local Checked");
+                    MessageBox.Show($"{control.Content} - {Application.Current.FindResource("Checked")}");
                 } else
                 {
-                    MessageBox.Show($"{control.Content} - Local Unchecked");
+                    MessageBox.Show($"{control.Content} - {Application.Current.FindResource("UnChecked")}");
                 }
             }
         }

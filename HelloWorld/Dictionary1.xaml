@@ -4,5 +4,7 @@
                     xmlns:local="clr-namespace:HelloWorld">
 
     <clr:String x:Key="ApplicationName">My Hello World Application</clr:String>
+    <clr:String x:Key="Checked">Local Checked</clr:String>
+    <clr:String x:Key="UnChecked">Local UnChecked</clr:String>
 
 </ResourceDictionary>
