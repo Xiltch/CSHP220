@@ -24,7 +24,7 @@ namespace HelloWorld
         {
             InitializeComponent();
 
-            uxProgressBar.Maximum = 40; // Set the maximum
+            uxProgressBar.Maximum = uxTextEditor.MaxLength;
         }
 
         private void uxTextEditor_SelectionChanged(object sender, RoutedEventArgs e)

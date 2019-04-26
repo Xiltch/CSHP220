@@ -69,6 +69,9 @@
     <Compile Include="ComboWindow.xaml.cs">
       <DependentUpon>ComboWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ControlWindow.xaml.cs">
+      <DependentUpon>ControlWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MenuWindow.xaml.cs">
       <DependentUpon>MenuWindow.xaml</DependentUpon>
     </Compile>
@@ -97,6 +100,10 @@
       <DependentUpon>Sample.tt</DependentUpon>
     </Compile>
     <Page Include="ComboWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
