@@ -10,17 +10,20 @@
         <Menu>
             <MenuItem Header="_File">
                 <MenuItem x:Name="uxFileNew" Header="_New" Click="uxFileNew_Click" />
+                <MenuItem x:Name="uxFileDelete" Header="_Delete" Click="uxFileDelete_Click" Loaded="uxFileDelete_Loaded" />
+                <MenuItem x:Name="uxFileChange" Header="_Modify" Click="uxFileChange_Click" Loaded="uxFileChange_Loaded" />
             </MenuItem>
         </Menu>
-        <ListView x:Name="uxContactList" Height="200">
+        <ListView x:Name="uxContactList" Height="200" SelectionChanged="uxContactList_SelectionChanged">
 
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="uxContextFileNew" Header="_New" Click="uxFileNew_Click"/>
                     <MenuItem x:Name="uxContextFileChange" Header="_Modify" Click="uxFileChange_Click" />
-                    <MenuItem x:Name="uxContextFileDelete" Header="_Delete" Click="uxFileDelete_Click" />
+                    <MenuItem x:Name="uxContextFileDelete" Header="_Delete" Click="uxFileDelete_Click"/>
                 </ContextMenu>
             </ListView.ContextMenu>
+            
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" Width="100" />
@@ -30,6 +33,7 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Age}" Header="Age" Width="100" />
                 </GridView>
             </ListView.View>
+            
         </ListView>
     </StackPanel>
 </Window>
