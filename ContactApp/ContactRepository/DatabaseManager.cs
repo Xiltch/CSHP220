@@ -2,7 +2,7 @@
 
 namespace ContactRepository
 {
-    public class DatabaseManager
+    class DatabaseManager
     {
         private static readonly ContactsEntities entities;
 
