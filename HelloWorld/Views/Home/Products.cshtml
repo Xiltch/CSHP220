@@ -1,8 +1,9 @@
 ﻿@model HelloWorld.Models.Product[]
 
 @{
-    ViewBag.Title = "Products";
+    ViewBag.MyLittleTitle = "Products";
 }
+
 
 @if (Model.Length > 0)
 {
@@ -22,7 +23,7 @@
                             <div>Low stock</div>
                             break;
                         default:
-                            @String.Format("{0: #, ##0} in stock",  product.ProductCount)
+                            @String.Format("{0: #, ##0} in stock", product.ProductCount)
                             break;
                     }
                 </td>
