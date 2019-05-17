@@ -3,12 +3,25 @@
     Layout = null;
 }
 <!DOCTYPE html>
-<h1>Thank you, @Model.Name</h1>
-@if (Model.WillAttend == true)
-{
-    @:Thanks for coming!
-}
-else
-{
-    @:Sorry you can't make it.
-}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+</head>
+
+<body>
+    <div class="text-center">
+        <h1>Thank you, @Model.Name</h1>
+        @if (Model.WillAttend == true)
+        {
+            @:Thanks for coming!
+        }
+        else
+        {
+            @:Sorry you can't make it.
+        }
+    </div>
+</body>
+</html>
