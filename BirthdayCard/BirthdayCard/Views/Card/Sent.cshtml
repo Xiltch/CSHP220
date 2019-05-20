@@ -1,0 +1,19 @@
+﻿@model BirthdayCard.Models.BirthayCard
+
+@{
+    ViewBag.Title = "Sent";
+}
+
+<h2>Birthday Card Sent</h2>
+
+
+<p><label>From:</label> @Html.DisplayTextFor(m => m.From)</p>
+<p><label>To:</label> @Html.DisplayTextFor(m => m.To)</p>
+<p><label>Message:</label> @Html.DisplayTextFor(m => m.Message)</p>
+
+<br />
+
+<div>
+    @Html.ActionLink("Back to main page", "Index", "Home")
+</div>
+

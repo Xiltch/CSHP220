@@ -10,12 +10,20 @@ namespace BirthdayCard.Controllers
     public class CardController : Controller
     {
         // GET: Card
+        [HttpGet]
         public ActionResult New()
         {
             Card card = new Card();
             return View(card);
         }
 
-        
+        [HttpPost]
+        public ActionResult New(Card card)
+        {
+            if (!ModelState.IsValid)
+                return View(card);
+
+            return View("Sent", card);
+        }
     }
 }
