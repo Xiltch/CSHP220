@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[TaskUser]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [First] NVARCHAR(50) NOT NULL, 
+    [Last] NCHAR(10) NOT NULL
+)
