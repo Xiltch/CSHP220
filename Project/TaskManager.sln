@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager", "TaskManager\TaskManager.csproj", "{5E044E1F-8AA1-443C-9C3A-DB45B68E7DD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskRepository", "TaskRepository\TaskRepository.csproj", "{879166AC-E6E6-4F2C-8A0E-47EB1F7B3F32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blueprints", "Blueprints\Blueprints.csproj", "{EA6D3370-7F44-4B92-B836-050D48B992B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{5E044E1F-8AA1-443C-9C3A-DB45B68E7DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E044E1F-8AA1-443C-9C3A-DB45B68E7DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E044E1F-8AA1-443C-9C3A-DB45B68E7DD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{879166AC-E6E6-4F2C-8A0E-47EB1F7B3F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{879166AC-E6E6-4F2C-8A0E-47EB1F7B3F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{879166AC-E6E6-4F2C-8A0E-47EB1F7B3F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{879166AC-E6E6-4F2C-8A0E-47EB1F7B3F32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA6D3370-7F44-4B92-B836-050D48B992B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA6D3370-7F44-4B92-B836-050D48B992B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA6D3370-7F44-4B92-B836-050D48B992B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA6D3370-7F44-4B92-B836-050D48B992B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
