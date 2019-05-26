@@ -16,6 +16,11 @@ namespace Blueprints
         bool DeleteTask(int ID);
         bool AddComment(int taskID, IComment comment);
         bool DeleteComment(int ID);
+        IEnumerable<IUser> GetUsers();
+        bool AddUser(IUser user);
+        bool UpdateUser(IUser user);
+        IUser GetUser(int ID);
+        bool DeleteUser(int ID);
     }
 
 }
