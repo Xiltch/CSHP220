@@ -21,6 +21,7 @@ namespace Blueprints
         void UpdateUser(IUser user);
         IUser GetUser(int ID);
         void DeleteUser(int ID);
+        int Save();
     }
 
 }

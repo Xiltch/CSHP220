@@ -32,5 +32,18 @@ namespace TaskManager.Controllers
             return View(user);
         }
 
+        [HttpPost]
+        public ActionResult Create(User user)
+        {
+
+            if (!ModelState.IsValid)
+                return View();
+
+            repository.AddUser(user);
+            repository.Save();
+
+            return RedirectToAction("List");
+        }
+
     }
 }

@@ -41,7 +41,7 @@ namespace TastkManager.Tests
 
             Assert.AreEqual(count, repos.GetUsers().Count());
 
-            int updated = repos.UpdateDatabase();
+            int updated = repos.Save();
 
             Assert.IsTrue(updated > 0);
 
@@ -65,7 +65,7 @@ namespace TastkManager.Tests
 
             Assert.IsNotNull(repos.GetUser(user.ID));
 
-            updated = repos.UpdateDatabase();
+            updated = repos.Save();
 
             Assert.IsTrue(updated > 0);
 
@@ -87,7 +87,7 @@ namespace TastkManager.Tests
 
             Assert.IsNotNull(repos.GetUser(user.ID));
 
-            updated = repos.UpdateDatabase();
+            updated = repos.Save();
 
             Assert.IsTrue(updated > 0);
 

@@ -89,7 +89,7 @@ namespace TaskRepository
             return result;
         }
 
-        public int UpdateDatabase()
+        public int Save()
         {
             return context.SaveChanges();
         }
