@@ -51,5 +51,22 @@ namespace TaskManager.Controllers
             return View(user);
         }
 
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            IUser user = repository.GetUser(id);
+            return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(User user)
+        {
+
+            repository.DeleteUser(user.ID);
+            repository.Save();
+
+            return RedirectToAction("List");
+        }
+
     }
 }

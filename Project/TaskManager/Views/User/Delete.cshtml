@@ -1,0 +1,41 @@
+﻿@model Blueprints.IUser
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete User</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    @Html.HiddenFor(model => model.ID)
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.First)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.First)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Last)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Last)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> 
+            @Html.ActionLink("Cancel", "List", null, new { @class = "btn btn-default" }  )
+        </div>
+    }
+</div>
