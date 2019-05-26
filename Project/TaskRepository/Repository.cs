@@ -12,17 +12,12 @@ namespace TaskRepository
     {
         private TaskManagerEntities context = new TaskManagerEntities();
 
-        public bool AddComment(int taskID, IComment comment)
+        public IComment AddComment(int taskID, IComment comment)
         {
             throw new NotImplementedException();
         }
 
-        public bool AddTask(ITask task)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool AddUser(IUser user)
+        public ITask AddTask(ITask task)
         {
             throw new NotImplementedException();
         }
@@ -37,11 +32,6 @@ namespace TaskRepository
             throw new NotImplementedException();
         }
 
-        public bool DeleteUser(int ID)
-        {
-            throw new NotImplementedException();
-        }
-
         public ITask GetTask(int ID)
         {
             throw new NotImplementedException();
@@ -52,26 +42,56 @@ namespace TaskRepository
             throw new NotImplementedException();
         }
 
-        public IUser GetUser(int ID)
+        public ITask UpdateTask(ITask task)
         {
             throw new NotImplementedException();
+        }
+
+        public IUser AddUser(IUser user)
+        {
+            TaskUser newUser = new TaskUser() { First = user.First, Last = user.Last };
+            newUser = context.TaskUser.Add(newUser);
+            return new User() { ID = newUser.Id, First = newUser.First, Last = newUser.Last };
+        }
+
+        public IUser UpdateUser(IUser user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteUser(int ID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IUser GetUser(int ID)
+        {
+            var result = context.TaskUser
+                .Where(x => x.Id.Equals(ID))
+                .Select(x => new User() { ID = x.Id, First = x.First, Last = x.Last })
+                .FirstOrDefault();
+            return result;
         }
 
         public IEnumerable<IUser> GetUsers()
         {
-            var u = context.TaskUser.FirstOrDefault();
-            var result = context.TaskUser.Select(x => new { Frst = x.First, Last = x.Last });
-            return null;
+            var result = context.TaskUser.Select(x => new User() { ID = x.Id, First = x.First, Last = x.Last });
+            return result;
         }
 
-        public bool UpdateTask(ITask task)
+        public int UpdateDatabase()
         {
-            throw new NotImplementedException();
+            return context.SaveChanges();
         }
 
-        public bool UpdateUser(IUser user)
-        {
-            throw new NotImplementedException();
-        }
     }
+
+    public class User : IUser
+    {
+        public int ID { get; set; }
+        public string First { get; set; }
+        public string Last { get; set; }
+
+    }
+
 }
