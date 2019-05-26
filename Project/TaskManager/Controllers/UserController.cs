@@ -45,5 +45,11 @@ namespace TaskManager.Controllers
             return RedirectToAction("List");
         }
 
+        public ActionResult Details(int id)
+        {
+            IUser user = repository.GetUser(id);
+            return View(user);
+        }
+
     }
 }
