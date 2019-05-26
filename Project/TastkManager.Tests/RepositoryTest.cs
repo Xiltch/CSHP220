@@ -15,11 +15,11 @@ namespace TastkManager.Tests
             Repository repos = new Repository();
             var result = repos.GetUsers();
             var actual = result.ToArray().Length;
-            Assert.IsTrue(actual > 0,"Was expecting at least one or more users from the repository");
+            Assert.IsTrue(actual > 0, "Was expecting at least one or more users from the repository");
         }
 
         [TestMethod]
-        public void  TestGetUser()
+        public void TestGetUser()
         {
             Repository repos = new Repository();
             var firstUser = repos.GetUsers().FirstOrDefault();
@@ -37,10 +37,8 @@ namespace TastkManager.Tests
 
             IUser user = new User() { First = "John", Last = "Doe" };
 
-            user = repos.AddUser(user);
+            repos.AddUser(user);
 
-            Assert.AreEqual(0, user.ID);
-            Assert.IsNull(repos.GetUser(user.ID));
             Assert.AreEqual(count, repos.GetUsers().Count());
 
             int updated = repos.UpdateDatabase();
@@ -49,11 +47,51 @@ namespace TastkManager.Tests
 
             var results = repos.GetUsers().ToArray();
 
-            user = repos.GetUsers()
-                .Where(x => x.First.Equals("John") && x.Last.Equals("Doe") )
+            user = results
+                .Where(x => x.First.Equals("John") && x.Last.Equals("Doe"))
                 .FirstOrDefault();
 
             Assert.IsNotNull(repos.GetUser(user.ID));
+
+            user.Last = "Dorian";
+
+            repos.UpdateUser(user);
+
+            results = repos.GetUsers().ToArray();
+
+            user = results
+                .Where(x => x.First.Equals("John") && x.Last.Equals("Doe"))
+                .FirstOrDefault();
+
+            Assert.IsNotNull(repos.GetUser(user.ID));
+
+            updated = repos.UpdateDatabase();
+
+            Assert.IsTrue(updated > 0);
+
+            results = repos.GetUsers().ToArray();
+
+            user = results
+                .Where(x => x.First.Equals("John") && x.Last.Equals("Doe"))
+                .FirstOrDefault();
+
+            Assert.IsNull(user);
+
+            user = results
+                .Where(x => x.First.Equals("John") && x.Last.Equals("Dorian"))
+                .FirstOrDefault();
+
+            Assert.IsNotNull(repos.GetUser(user.ID));
+
+            repos.DeleteUser(user.ID);
+
+            Assert.IsNotNull(repos.GetUser(user.ID));
+
+            updated = repos.UpdateDatabase();
+
+            Assert.IsTrue(updated > 0);
+
+            Assert.IsNull(repos.GetUser(user.ID));
 
         }
 

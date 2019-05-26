@@ -12,22 +12,22 @@ namespace TaskRepository
     {
         private TaskManagerEntities context = new TaskManagerEntities();
 
-        public IComment AddComment(int taskID, IComment comment)
+        public void AddComment(int taskID, IComment comment)
         {
             throw new NotImplementedException();
         }
 
-        public ITask AddTask(ITask task)
+        public void AddTask(ITask task)
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteComment(int ID)
+        public void DeleteComment(int ID)
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteTask(int ID)
+        public void DeleteTask(int ID)
         {
             throw new NotImplementedException();
         }
@@ -42,26 +42,36 @@ namespace TaskRepository
             throw new NotImplementedException();
         }
 
-        public ITask UpdateTask(ITask task)
+        public void UpdateTask(ITask task)
         {
             throw new NotImplementedException();
         }
 
-        public IUser AddUser(IUser user)
+        public void AddUser(IUser user)
         {
             TaskUser newUser = new TaskUser() { First = user.First, Last = user.Last };
             newUser = context.TaskUser.Add(newUser);
-            return new User() { ID = newUser.Id, First = newUser.First, Last = newUser.Last };
         }
 
-        public IUser UpdateUser(IUser user)
+        public void UpdateUser(IUser user)
         {
-            throw new NotImplementedException();
+            TaskUser current = context.TaskUser.SingleOrDefault(x => x.Id.Equals(user.ID));
+
+            if (current == null)
+                throw new ArgumentException("User ID not found");
+
+            context.Entry(current).CurrentValues.SetValues(user);
+
         }
 
-        public bool DeleteUser(int ID)
+        public void DeleteUser(int ID)
         {
-            throw new NotImplementedException();
+            TaskUser user = context.TaskUser.SingleOrDefault(x => x.Id.Equals(ID));
+
+            if (user == null)
+                throw new ArgumentException("User ID not found");
+
+            context.TaskUser.Remove(user);
         }
 
         public IUser GetUser(int ID)

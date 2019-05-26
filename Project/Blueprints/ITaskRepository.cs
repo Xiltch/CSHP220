@@ -10,17 +10,17 @@ namespace Blueprints
     public interface ITaskRepository
     {
         IEnumerable<ITask> GetTasks();
-        ITask AddTask(ITask task);
-        ITask UpdateTask(ITask task);
+        void AddTask(ITask task);
+        void UpdateTask(ITask task);
         ITask GetTask(int ID);
-        bool DeleteTask(int ID);
-        IComment AddComment(int taskID, IComment comment);
-        bool DeleteComment(int ID);
+        void DeleteTask(int ID);
+        void AddComment(int taskID, IComment comment);
+        void DeleteComment(int ID);
         IEnumerable<IUser> GetUsers();
-        IUser AddUser(IUser user);
-        IUser UpdateUser(IUser user);
+        void AddUser(IUser user);
+        void UpdateUser(IUser user);
         IUser GetUser(int ID);
-        bool DeleteUser(int ID);
+        void DeleteUser(int ID);
     }
 
 }
