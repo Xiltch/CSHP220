@@ -1,6 +1,7 @@
 ﻿using Blueprints;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ namespace TaskRepository
 {
     public class Repository : ITaskRepository
     {
+        private TaskManagerEntities context = new TaskManagerEntities();
+
         public bool AddComment(int taskID, IComment comment)
         {
             throw new NotImplementedException();
@@ -56,7 +59,9 @@ namespace TaskRepository
 
         public IEnumerable<IUser> GetUsers()
         {
-            throw new NotImplementedException();
+            var u = context.TaskUser.FirstOrDefault();
+            var result = context.TaskUser.Select(x => new { Frst = x.First, Last = x.Last });
+            return null;
         }
 
         public bool UpdateTask(ITask task)

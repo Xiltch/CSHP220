@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TaskRepository;
 
 namespace TastkManager.Tests
 {
@@ -7,8 +8,10 @@ namespace TastkManager.Tests
     public class RepositoryTest
     {
         [TestMethod]
-        public void TestGet()
+        public void TestGetUser()
         {
+            Repository repos = new Repository();
+            var result = repos.GetUsers();
         }
     }
 }
