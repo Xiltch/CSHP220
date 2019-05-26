@@ -17,8 +17,8 @@ namespace TaskManager.Controllers
             this.repository = context;
         }
 
-        // GET: User
-        public ActionResult Index()
+        // GET: Users
+        public ActionResult List()
         {
             IEnumerable<IUser> users = repository.GetUsers();
             return View(users);

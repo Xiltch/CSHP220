@@ -21,7 +21,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">Tasks</a></li>
+                    <li>@Html.ActionLink("Tasks", "Index", "Task", new { area = "" }, new { @class = "dropdown-item" })</li>
                     <li class="dropdown btn-group">
                         <a class="btn dropdown-toggle" 
                            role="button" 
@@ -31,8 +31,8 @@
                            aria-expanded="false">Manage <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="#">Tasks</a></li>
-                            <li><a class="dropdown-item" href="#">Users</a></li>
+                            <li>@Html.ActionLink("Tasks", "List", "Task", new { area = "" }, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Users", "List", "User", new { area = "" }, new { @class = "dropdown-item" })</li>
                         </ul>
                     </li>
                 </ul>
