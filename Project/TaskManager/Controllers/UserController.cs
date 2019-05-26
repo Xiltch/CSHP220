@@ -20,7 +20,8 @@ namespace TaskManager.Controllers
         // GET: User
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<IUser> users = repository.GetUsers();
+            return View(users);
         }
     }
 }

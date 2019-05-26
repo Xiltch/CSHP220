@@ -1,9 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Reflection;
+using Autofac;
+using Autofac.Integration.Mvc;
+using Blueprints;
 
 namespace TaskManager
 {
@@ -13,6 +14,24 @@ namespace TaskManager
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            RegisterAutofac();
+        }
+
+        private void RegisterAutofac()
+        {
+            var builder = new ContainerBuilder();
+
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).AsSelf().AsImplementedInterfaces();
+
+            //builder.RegisterType<ContactRepository>().As<IContactRepository>();
+            builder.RegisterType<TaskRepository.Repository>().As<ITaskRepository>();
+
+            var container = builder.Build();
+
+            // Configure dependency resolver.
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
     }
 }
