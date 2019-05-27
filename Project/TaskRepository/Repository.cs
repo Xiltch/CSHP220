@@ -12,22 +12,17 @@ namespace TaskRepository
     {
         private TaskManagerEntities context = new TaskManagerEntities();
 
-        public void AddComment(int taskID, IComment comment)
-        {
-            throw new NotImplementedException();
-        }
-
         public void AddTask(ITask task)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteComment(int ID)
+        public void DeleteTask(int ID)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteTask(int ID)
+        public void UpdateTask(ITask task)
         {
             throw new NotImplementedException();
         }
@@ -39,10 +34,30 @@ namespace TaskRepository
 
         public IEnumerable<ITask> GetTasks()
         {
+            var result = context.Task.Select(x => new Task()
+            {
+                ID = x.Id,
+                Name = x.Name,
+                Details = x.Details,
+                Status =  (Blueprints.TaskStatus)x.Status,
+                Start = x.Start,
+                Stop = x.Stop,
+                AssignedTo = ConvertTaskUser(x.TaskUser)
+            });
+            return result;
+        }
+
+        private IUser ConvertTaskUser(TaskUser user)
+        {
+            return new User() { ID = user.Id, First = user.First, Last = user.Last };
+        }
+
+        public void AddComment(int taskID, IComment comment)
+        {
             throw new NotImplementedException();
         }
 
-        public void UpdateTask(ITask task)
+        public void DeleteComment(int ID)
         {
             throw new NotImplementedException();
         }
@@ -94,14 +109,24 @@ namespace TaskRepository
             return context.SaveChanges();
         }
 
-    }
+        private class User : IUser
+        {
+            public int ID { get; set; }
+            public string First { get; set; }
+            public string Last { get; set; }
 
-    public class User : IUser
-    {
-        public int ID { get; set; }
-        public string First { get; set; }
-        public string Last { get; set; }
+        }
 
+        private class Task : ITask
+        {
+            public int ID { get; set; }
+            public string Name { get; set; }
+            public string Details { get; set; }
+            public Blueprints.TaskStatus Status { get; set; }
+            public DateTime? Start { get; set; }
+            public DateTime? Stop { get; set; }
+            public IUser AssignedTo { get; set; }
+        }
     }
 
 }

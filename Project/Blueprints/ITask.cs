@@ -8,6 +8,7 @@ namespace Blueprints
 {
     public enum TaskStatus
     {
+        DRAFT,
         PENDING,
         IN_PROGRESS,
         COMPLETED,
