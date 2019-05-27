@@ -68,5 +68,20 @@ namespace TaskManager.Controllers
             return RedirectToAction("List");
         }
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            IUser user = repository.GetUser(id);
+            return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(User user)
+        {
+            repository.UpdateUser(user);
+            repository.Save();
+            return RedirectToAction("List");
+        }
+
     }
 }
