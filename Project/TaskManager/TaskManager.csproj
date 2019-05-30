@@ -58,6 +58,8 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -128,11 +130,23 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="App_Data\TaskManagerEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TaskManagerEntities.edmx</DependentUpon>
+      <LastGenOutput>TaskManagerEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_Data\TaskManagerEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TaskManagerEntities.edmx</DependentUpon>
+      <LastGenOutput>TaskManagerEntities.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Data\Repository.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -140,6 +154,30 @@
     <Compile Include="Models\Task.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="App_Data\Task.cs">
+      <DependentUpon>TaskManagerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\TaskComment.cs">
+      <DependentUpon>TaskManagerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\TaskManagerEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaskManagerEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\TaskManagerEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaskManagerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\TaskManagerEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaskManagerEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Data\TaskUser.cs">
+      <DependentUpon>TaskManagerEntities.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -155,6 +193,20 @@
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Task\List.cshtml" />
+    <EntityDeploy Include="App_Data\TaskManagerEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TaskManagerEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="App_Data\TaskManagerEntities.edmx.diagram">
+      <DependentUpon>TaskManagerEntities.edmx</DependentUpon>
+    </Content>
+    <Content Include="Views\Task\Details.cshtml" />
+    <Content Include="Views\Task\Index.cshtml" />
+    <Content Include="Views\Task\_DisplayOnly.cshtml" />
+    <Content Include="Views\Task\Edit.cshtml" />
+    <Content Include="Views\Task\Delete.cshtml" />
+    <Content Include="Views\Task\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -163,7 +215,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Scripts\esm\" />
     <Folder Include="Scripts\umd\" />
   </ItemGroup>
@@ -172,10 +223,9 @@
       <Project>{ea6d3370-7f44-4b92-b836-050d48b992b9}</Project>
       <Name>Blueprints</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TaskRepository\TaskRepository.csproj">
-      <Project>{879166ac-e6e6-4f2c-8a0e-47eb1f7b3f32}</Project>
-      <Name>TaskRepository</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

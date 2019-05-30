@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Blueprints.ITask>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Tasks</h2>
+
+@{ 
+    Html.RenderPartial("_DisplayOnly");
+}

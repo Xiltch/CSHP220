@@ -47,7 +47,7 @@ namespace TaskRepository
             return result;
         }
 
-        private IUser ConvertTaskUser(TaskUser user)
+        public static IUser ConvertTaskUser(TaskUser user)
         {
             return new User() { ID = user.Id, First = user.First, Last = user.Last };
         }

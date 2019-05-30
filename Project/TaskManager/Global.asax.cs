@@ -5,6 +5,7 @@ using System.Reflection;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Blueprints;
+using TaskManager.App_Data;
 
 namespace TaskManager
 {
@@ -26,7 +27,7 @@ namespace TaskManager
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).AsSelf().AsImplementedInterfaces();
 
             //builder.RegisterType<ContactRepository>().As<IContactRepository>();
-            builder.RegisterType<TaskRepository.Repository>().As<ITaskRepository>();
+            builder.RegisterType<Repository>().As<ITaskRepository>();
 
             var container = builder.Build();
 

@@ -14,5 +14,10 @@ namespace TaskManager.Models
         public string First { get; set; }
         [Required(ErrorMessage = "Must provide a First name")]
         public string Last { get; set; }
+
+        public override string ToString()
+        {
+            return $"{First} {Last}";
+        }
     }
 }
