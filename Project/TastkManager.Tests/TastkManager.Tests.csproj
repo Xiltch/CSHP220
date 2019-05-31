@@ -72,6 +72,10 @@
       <Project>{EA6D3370-7F44-4B92-B836-050D48B992B9}</Project>
       <Name>Blueprints</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TaskManager\TaskManager.csproj">
+      <Project>{5e044e1f-8aa1-443c-9c3a-db45b68e7dd4}</Project>
+      <Name>TaskManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

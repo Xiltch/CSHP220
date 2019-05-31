@@ -2,7 +2,7 @@
 using System.Linq;
 using Blueprints;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TaskRepository;
+using TaskManager.App_Data;
 
 namespace TastkManager.Tests
 {

@@ -6,28 +6,35 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.AssignedTo)
         </th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.ActionLink(item.Name, "Details", new { id = item.ID })
-            </td>
-            <td>
-                @if (item.AssignedTo != null)
-                {
-                    @Html.Raw($"{item.AssignedTo.First} {item.AssignedTo.Last}")
+<tr>
+    <td>
+        @Html.ActionLink(item.Name, "Details", new { id = item.ID })
+    </td>
+    <td>
+        @Html.DisplayFor(model => item.Status)
+    </td>
+    <td>
+        @if (item.AssignedTo != null)
+        {
+            @Html.Raw($"{item.AssignedTo.First} {item.AssignedTo.Last}")
 
-                } else
-                {
-                    @Html.Raw("-- Unassigned --");
-                }
+        }
+        else
+        {
+            @Html.Raw("-- Unassigned --");
+        }
 
-            </td>
-        </tr>
+    </td>
+</tr>
     }
 
 </table>
