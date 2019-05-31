@@ -22,16 +22,21 @@ namespace TaskManager.Controllers
             return View(tasks);
         }
 
-        public ActionResult TopTen()
+        public ActionResult TopFive()
         {
-            IEnumerable<ITask> tasks = repository.GetTasks().OrderByDescending(x => x.Stop).Take(10);
+            IEnumerable<ITask> tasks = repository.GetTasks()
+                .Where(x => x.Status != TaskStatus.DRAFT && x.Status != TaskStatus.COMPLETED)
+                .OrderByDescending(x => x.Stop)
+                .Take(5);
             var c = tasks.Count();
             return PartialView("_DisplayOnly", tasks);
         }
 
         public ActionResult List()
         {
-            IEnumerable<ITask> tasks = repository.GetTasks();
+            IEnumerable<ITask> tasks = repository.GetTasks()
+                .OrderByDescending(x => x.Stop)
+                .ThenByDescending(x => x.Start);
             return View(tasks);
         }
 

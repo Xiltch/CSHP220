@@ -23,12 +23,13 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Tasks", "Index", "Task", new { area = "" }, new { @class = "dropdown-item" })</li>
                     <li class="dropdown btn-group">
-                        <a class="btn dropdown-toggle" 
-                           role="button" 
-                           id="dropdownMenuButton" 
-                           data-toggle="dropdown" 
-                           aria-haspopup="true" 
-                           aria-expanded="false">Manage <span class="caret"></span>
+                        <a class="btn dropdown-toggle"
+                           role="button"
+                           id="dropdownMenuButton"
+                           data-toggle="dropdown"
+                           aria-haspopup="true"
+                           aria-expanded="false">
+                            Manage <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li>@Html.ActionLink("Tasks", "List", "Task", new { area = "" }, new { @class = "dropdown-item" })</li>
@@ -50,5 +51,6 @@
 
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
