@@ -47,7 +47,11 @@ namespace TaskManager.App_Data
 
             var entry = context.Entry(current);
 
-            var sourceProps = task.GetType().GetProperties();
+            var sourceType = task.GetType();
+            var sourceProps = task.GetType().GetProperties(
+                System.Reflection.BindingFlags.Public |
+                System.Reflection.BindingFlags.NonPublic | 
+                System.Reflection.BindingFlags.Instance);
 
             foreach (var propName in entry.CurrentValues.PropertyNames)
             {

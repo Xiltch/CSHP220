@@ -15,7 +15,10 @@ namespace TaskManager.Models
         public string Name { get; set; }
         [Required(ErrorMessage = "Must provide details")]
         public string Details { get; set; }
+        [NotMapped]
         public TaskStatus Status { get; set; }
+        [Column("Status")]
+        private int EnumStatus { get { return (int)Status; } set { Status = (TaskStatus)value; } }
         public DateTime? Start { get; set; }
         public DateTime? Stop { get; set; }
         public IUser AssignedTo { get; set; }
