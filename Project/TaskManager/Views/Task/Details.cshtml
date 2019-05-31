@@ -1,4 +1,5 @@
-﻿@model TaskManager.Models.Task
+﻿@using TaskManager.Helpers
+@model TaskManager.Models.Task
 
 @{
     ViewBag.Title = "Details";
@@ -39,7 +40,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Start)
+            @Html.DisplayDateOnlyFor(model => model.Start)
         </dd>
 
         <dt>
@@ -47,7 +48,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Stop)
+            @Html.DisplayDateOnlyFor(model => model.Stop)
         </dd>
 
         <dt>

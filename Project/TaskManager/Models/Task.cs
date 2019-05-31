@@ -13,6 +13,8 @@ namespace TaskManager.Models
         public int ID { get; set; }
         [Required(ErrorMessage = "Must provide a name")]
         public string Name { get; set; }
+
+        [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "Must provide details")]
         public string Details { get; set; }
         [NotMapped]
