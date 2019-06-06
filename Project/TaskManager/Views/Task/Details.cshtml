@@ -11,6 +11,7 @@
     <h4>Task</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -58,6 +59,23 @@
         <dd>
             @Html.DisplayFor(model => model.AssignedTo.First) @Html.DisplayFor(model => model.AssignedTo.Last)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayDateTimeFor(model => model.Created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified)
+        </dt>
+
+        <dd>
+            @Html.DisplayDateTimeFor(model => model.Modified)
+        </dd>
+
 
     </dl>
 </div>

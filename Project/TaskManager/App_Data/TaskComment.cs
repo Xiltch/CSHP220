@@ -19,6 +19,7 @@ namespace TaskManager.App_Data
         public System.DateTime Date { get; set; }
         public int CreatedBy { get; set; }
         public string Details { get; set; }
+        public System.DateTime Created { get; set; }
     
         public virtual Task Task { get; set; }
         public virtual TaskUser TaskUser { get; set; }

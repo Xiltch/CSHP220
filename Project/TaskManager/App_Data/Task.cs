@@ -27,6 +27,8 @@ namespace TaskManager.App_Data
         public Nullable<System.DateTime> Start { get; set; }
         public Nullable<System.DateTime> Stop { get; set; }
         public Nullable<int> AssignedTo { get; set; }
+        public System.DateTime Created { get; set; }
+        public System.DateTime Modified { get; set; }
     
         public virtual TaskUser TaskUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TaskManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TaskManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Task">
           <Key>
             <PropertyRef Name="Id" />
@@ -16,6 +16,8 @@
           <Property Name="Start" Type="date" />
           <Property Name="Stop" Type="datetime" />
           <Property Name="AssignedTo" Type="int" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="TaskComment">
           <Key>
@@ -26,6 +28,7 @@
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="Details" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="TaskUser">
           <Key>
@@ -88,8 +91,7 @@
             <End Role="TaskComment" EntitySet="TaskComment" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TaskManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -106,6 +108,8 @@
           <Property Name="AssignedTo" Type="Int32" />
           <NavigationProperty Name="TaskUser" Relationship="Self.FK_Task_ToTable" FromRole="Task" ToRole="TaskUser" />
           <NavigationProperty Name="TaskComments" Relationship="Self.FK_TaskComment_ToTask" FromRole="Task" ToRole="TaskComment" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="TaskComment">
           <Key>
@@ -118,6 +122,7 @@
           <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Task" Relationship="Self.FK_TaskComment_ToTask" FromRole="TaskComment" ToRole="Task" />
           <NavigationProperty Name="TaskUser" Relationship="Self.FK_TaskComment_ToUser" FromRole="TaskComment" ToRole="TaskUser" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="TaskUser">
           <Key>
@@ -191,6 +196,8 @@
           <EntitySetMapping Name="Task">
             <EntityTypeMapping TypeName="TaskManagerModel.Task">
               <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Details" ColumnName="Details" />
@@ -204,6 +211,7 @@
           <EntitySetMapping Name="TaskComment">
             <EntityTypeMapping TypeName="TaskManagerModel.TaskComment">
               <MappingFragment StoreEntitySet="TaskComment">
+                <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TaskId" ColumnName="TaskId" />
                 <ScalarProperty Name="Date" ColumnName="Date" />

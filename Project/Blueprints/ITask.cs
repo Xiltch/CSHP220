@@ -23,6 +23,8 @@ namespace Blueprints
         TaskStatus Status { get; set; }
         DateTime? Start { get; set; }
         DateTime? Stop { get; set; }
+        DateTime Created { get; set; }
+        DateTime Modified { get; set; }
         IUser? AssignedTo { get; set; }
     }
 

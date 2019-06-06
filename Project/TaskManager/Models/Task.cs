@@ -23,6 +23,8 @@ namespace TaskManager.Models
         private int EnumStatus { get { return (int)Status; } set { Status = (TaskStatus)value; } }
         public DateTime? Start { get; set; }
         public DateTime? Stop { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime Modified { get; set; }
         public IUser AssignedTo { get; set; }
     }
 }

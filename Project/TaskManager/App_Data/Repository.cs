@@ -22,7 +22,10 @@ namespace TaskManager.App_Data
                 Details = task.Details,
                 Start = task.Start,
                 Stop = task.Stop,
-                Status = (int)task.Status
+                Status = (int)task.Status,
+                Created = DateTime.Now,
+                Modified = DateTime.Now
+
             };
 
             context.Task.Add(newTask);
@@ -160,6 +163,8 @@ namespace TaskManager.App_Data
                 Status = (Blueprints.TaskStatus)x.Status,
                 Start = x.Start,
                 Stop = x.Stop,
+                Created = x.Created,
+                Modified = x.Modified,
                 AssignedTo = x.AssignedTo.HasValue
                     ? new TaskManager.Models.User() { ID = x.TaskUser.Id, First = x.TaskUser.First, Last = x.TaskUser.Last }
                     : null

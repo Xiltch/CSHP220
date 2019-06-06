@@ -22,11 +22,11 @@ namespace TaskManager.Controllers
             return View(tasks);
         }
 
-        public ActionResult TopFive()
+        public ActionResult FiveMostRecent()
         {
             IEnumerable<ITask> tasks = repository.GetTasks()
                 .Where(x => x.Status != TaskStatus.DRAFT && x.Status != TaskStatus.COMPLETED)
-                .OrderByDescending(x => x.Stop)
+                .OrderByDescending(x => x.Modified)
                 .Take(5);
             var c = tasks.Count();
             return PartialView("_DisplayOnly", tasks);
@@ -35,8 +35,8 @@ namespace TaskManager.Controllers
         public ActionResult List()
         {
             IEnumerable<ITask> tasks = repository.GetTasks()
-                .OrderByDescending(x => x.Stop)
-                .ThenByDescending(x => x.Start);
+                .OrderByDescending(x => x.Modified)
+                .ThenByDescending(x => x.Created);
             return View(tasks);
         }
 
@@ -77,6 +77,8 @@ namespace TaskManager.Controllers
         {
             if (!ModelState.IsValid)
                 return View();
+
+            task.Modified = DateTime.Now;
 
             ((TaskManager.App_Data.Repository)repository).UpdateTask(task);
             repository.Save();
