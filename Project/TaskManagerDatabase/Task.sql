@@ -7,5 +7,7 @@
     [Start] DATE NULL, 
     [Stop] DATETIME NULL, 
     [AssignedTo] INT NULL, 
+    [Created] DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+    [Modified] DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
     CONSTRAINT [FK_Task_ToTable] FOREIGN KEY ([AssignedTo]) REFERENCES [TaskUser]([Id])
 )
