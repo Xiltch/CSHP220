@@ -61,10 +61,22 @@ namespace TaskManager.App_Data
                 var sourceProp = sourceProps
                     .Where(x => x.Name.Equals(propName, StringComparison.OrdinalIgnoreCase))
                     .FirstOrDefault();
-                if (propName.Equals("Status"))
-                    entry.Property(propName).CurrentValue = (int)sourceProp.GetValue(task);
-                else
-                    entry.Property(propName).CurrentValue = sourceProp.GetValue(task);
+                switch (propName)
+                {
+                    case "Status":
+                        entry.Property(propName).CurrentValue = (int)sourceProp.GetValue(task);
+                        break;
+                        
+                    case "AssignedTo":
+                        entry.Property(propName).CurrentValue = ((IUser)sourceProp.GetValue(task)).ID;
+                        break;
+
+                    default:
+                        entry.Property(propName).CurrentValue = sourceProp.GetValue(task);
+                        break;
+
+                }
+                    
             }
          
         }

@@ -26,5 +26,6 @@ namespace TaskManager.Models
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
         public IUser AssignedTo { get; set; }
+        public int AssignedUserID { get; set; }
     }
 }

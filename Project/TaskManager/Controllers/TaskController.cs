@@ -69,6 +69,16 @@ namespace TaskManager.Controllers
         public ActionResult Edit(int id)
         {
             ITask task = repository.GetTask(id);
+
+            List<SelectListItem> users = new List<SelectListItem>();
+            users.Add(new SelectListItem() { Value = "0", Text = "-- Unassigned --" });
+            repository.GetUsers()
+                .Select(x => new SelectListItem { Value = x.ID.ToString(), Text = x.ToString() })
+                .ToList()
+                .ForEach(x => users.Add(x));
+
+            ViewBag.UserSelection = users;
+
             return View(task);
         }
 
@@ -77,6 +87,15 @@ namespace TaskManager.Controllers
         {
             if (!ModelState.IsValid)
                 return View();
+
+            // Not assigned user is ID  = 0
+            if (task.AssignedUserID.Equals(0))
+            {
+                task.AssignedTo = null;
+            } else
+            {
+                task.AssignedTo = repository.GetUser(task.AssignedUserID);
+            }
 
             task.Modified = DateTime.Now;
 
