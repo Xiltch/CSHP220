@@ -133,10 +133,13 @@ namespace TaskManager.Controllers
 
         public ActionResult AddComment(int id)
         {
-            Comment comment = new Comment() { Task = repository.GetTask(id) };
+            Comment comment = new Comment() { TaskID = id };
 
             if (Session["CurrentUser"] is int)
-                comment.CreatedBy = repository.GetUser((int)Session["CurrentUser"]);
+            {
+                comment.CreatedByID = (int)Session["CurrentUser"];
+                comment.CreatedBy = repository.GetUser(comment.CreatedByID);
+            }
 
             return View(comment);
         }
@@ -144,6 +147,12 @@ namespace TaskManager.Controllers
         [HttpPost]
         public ActionResult AddComment(int id, Comment comment)
         {
+
+            comment.CreatedBy = new User() { ID = comment.CreatedByID };
+
+            repository.AddComment(id, comment);
+            repository.Save();
+
             return RedirectToAction("Details", new { id = id });
         }
 

@@ -99,7 +99,16 @@ namespace TaskManager.App_Data
 
         public void AddComment(int taskID, IComment comment)
         {
-            throw new NotImplementedException();
+            TaskUser user = context.TaskUser.SingleOrDefault(x => x.Id.Equals(comment.CreatedBy.ID));
+
+            TaskComment item = new TaskComment() {
+                TaskId = taskID,
+                Created = DateTime.Now,
+                CreatedBy = user.Id,
+                Details = comment.Details
+            };
+
+            context.TaskComment.Add(item);
         }
 
         public void DeleteComment(int ID)
