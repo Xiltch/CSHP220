@@ -18,14 +18,30 @@ namespace TaskManager.Controllers
 
         public ActionResult Index()
         {
-            IEnumerable<ITask> tasks = repository.GetTasks();
+            TaskStatus[] include = new TaskStatus[]
+            {
+                TaskStatus.IN_PROGRESS,
+                TaskStatus.PENDING,
+                TaskStatus.DRAFT,
+                TaskStatus.COMPLETED
+            };
+            IEnumerable<ITask> tasks = repository.GetTasks()
+                .Where(x => include.Contains(x.Status))
+                .OrderByDescending(x => x.Modified)
+                .ThenByDescending(x => x.Created);
             return View(tasks);
         }
 
         public ActionResult FiveMostRecent()
         {
+            TaskStatus[] include = new TaskStatus[]
+            {
+                TaskStatus.IN_PROGRESS,
+                TaskStatus.PENDING
+            };
+
             IEnumerable<ITask> tasks = repository.GetTasks()
-                .Where(x => x.Status != TaskStatus.DRAFT && x.Status != TaskStatus.COMPLETED)
+                .Where(x => include.Contains(x.Status))
                 .OrderByDescending(x => x.Modified)
                 .Take(5);
             var c = tasks.Count();
@@ -34,6 +50,7 @@ namespace TaskManager.Controllers
 
         public ActionResult List()
         {
+
             IEnumerable<ITask> tasks = repository.GetTasks()
                 .OrderByDescending(x => x.Modified)
                 .ThenByDescending(x => x.Created);

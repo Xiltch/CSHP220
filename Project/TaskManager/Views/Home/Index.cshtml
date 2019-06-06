@@ -1,6 +1,12 @@
 ﻿
 @{
     ViewBag.Title = "Welcome";
+    var currentValue = 0;
+    if (Session["CurrentUser"] != null)
+    {
+        currentValue = (int)Session["CurrentUser"];
+
+    }
 }
 
 <div style="padding-top: 2em" class="container-fluid">
@@ -10,7 +16,7 @@
 
         <div class="col-sm-2" style="min-width: 300px">
             @Html.DropDownList("CurrentUser",
-                new SelectList(ViewBag.UserSelection, "value", "text"),
+                new SelectList(ViewBag.UserSelection, "value", "text", currentValue),
                 new { @class = "form-control" })
         </div>
 

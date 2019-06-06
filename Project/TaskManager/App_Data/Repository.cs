@@ -109,6 +109,13 @@ namespace TaskManager.App_Data
             };
 
             context.TaskComment.Add(item);
+
+            // update the modified date on the task
+
+            Task task = context.Task.SingleOrDefault(x => x.Id.Equals(taskID));
+
+            task.Modified = DateTime.Now;
+
         }
 
         public void DeleteComment(int ID)
