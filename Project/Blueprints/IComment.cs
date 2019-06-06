@@ -9,11 +9,9 @@ namespace Blueprints
     public interface IComment
     {
         int ID { get; set; }
+        DateTime Created { get; set; }
         ITask Task { get; set; }
-        DateTime Date { get; set; }
         IUser CreatedBy { get; set; }
         string Details { get; set; }
-        DateTime Created { get; set; }
-        DateTime Modified { get; set; }
     }
 }

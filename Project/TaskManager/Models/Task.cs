@@ -27,5 +27,6 @@ namespace TaskManager.Models
         public DateTime Modified { get; set; }
         public IUser AssignedTo { get; set; }
         public int AssignedUserID { get; set; }
+        public IEnumerable<IComment> Comments { get; set; }
     }
 }

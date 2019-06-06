@@ -26,6 +26,8 @@ namespace Blueprints
         DateTime Created { get; set; }
         DateTime Modified { get; set; }
         IUser? AssignedTo { get; set; }
+        IEnumerable<IComment>? Comments { get; set; }
+
     }
 
 }

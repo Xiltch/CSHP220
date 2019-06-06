@@ -5,79 +5,118 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Task Details</h2>
 
 <div>
-    <h4>Task</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <div class="container">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+        <div class="row">
+            <div class="col">
+                <dl class="dl-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Details)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Status)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Details)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Details)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Start)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Details)
+                    </dd>
 
-        <dd>
-            @Html.DisplayDateOnlyFor(model => model.Start)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Start)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Stop)
-        </dt>
+                    <dd>
+                        @Html.DisplayDateOnlyFor(model => model.Start)
+                    </dd>
 
-        <dd>
-            @Html.DisplayDateOnlyFor(model => model.Stop)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Stop)
+                    </dt>
 
-        <dt>
-            Assigned To
-        </dt>
+                    <dd>
+                        @Html.DisplayDateOnlyFor(model => model.Stop)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AssignedTo.First) @Html.DisplayFor(model => model.AssignedTo.Last)
-        </dd>
+                    <dt>
+                        Assigned To
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Created)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.AssignedTo.First) @Html.DisplayFor(model => model.AssignedTo.Last)
+                    </dd>
 
-        <dd>
-            @Html.DisplayDateTimeFor(model => model.Created)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Created)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Modified)
-        </dt>
+                    <dd>
+                        @Html.DisplayDateTimeFor(model => model.Created)
+                    </dd>
 
-        <dd>
-            @Html.DisplayDateTimeFor(model => model.Modified)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Modified)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayDateTimeFor(model => model.Modified)
+                    </dd>
 
 
-    </dl>
+                </dl>
+            </div>
+
+            <tr class="col">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="h3">Comments</th>
+                            <th scope="col" class="text-right">@Html.ActionLink("Add Comment", "AddComment", new { id = Model.ID })</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!(Model.Comments is null))
+                        {
+                            foreach (var comment in Model.Comments)
+                            {
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="h5" style="font-weight: bold">
+                                            @Html.Raw(String.Format("{0} - {1}", comment.Created, comment.CreatedBy))
+                                        </div>
+                                        <div style="padding: 10px 0px 5px 20px">
+                                            @Html.DisplayFor(m => comment.Details)
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            }
+                        }
+                    </tbody>
+                </table>
+        </div>
+
+
+</div>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

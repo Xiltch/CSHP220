@@ -149,6 +149,12 @@ namespace TaskManager.App_Data
             return result;
         }
 
+        public IEnumerable<IComment> GetComments(int taskID)
+        {
+            var result = context.TaskComment.Where(x => x.TaskId.Equals(taskID)).SelectIComments();
+            return result;
+        }
+
         public int Save()
         {
             return context.SaveChanges();
@@ -180,6 +186,20 @@ namespace TaskManager.App_Data
                 AssignedTo = x.AssignedTo.HasValue
                     ? new TaskManager.Models.User() { ID = x.TaskUser.Id, First = x.TaskUser.First, Last = x.TaskUser.Last }
                     : null
+               
+            });
+        }
+
+        public static IEnumerable<IComment> SelectIComments(this IQueryable<TaskComment> comments)
+        {
+
+            return comments.Select(x => new TaskManager.Models.Comment()
+            {
+                ID = x.Id,
+                Details = x.Details,
+                Created = x.Created,
+                CreatedBy = new TaskManager.Models.User() { ID = x.CreatedUser.Id, First = x.CreatedUser.First, Last = x.CreatedUser.Last }
+
             });
         }
     }

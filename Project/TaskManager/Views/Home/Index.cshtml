@@ -3,7 +3,38 @@
     ViewBag.Title = "Welcome";
 }
 
+<div style="padding-top: 2em" class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-2 h2">Welcome</div>
+
+        <div class="col-sm-2" style="min-width: 300px">
+            @Html.DropDownList("CurrentUser",
+                new SelectList(ViewBag.UserSelection, "value", "text"),
+                new { @class = "form-control" })
+        </div>
+
+    </div>
+</div>
+
 <h2>Top 5 Recent Tasks</h2>
 
 @{ Html.RenderAction("FiveMostRecent", "Task"); }
 
+@section scripts {
+    <script type="text/javascript">
+        // assuming you're using jQuery
+        $("#CurrentUser").change(function (event) {
+            $.ajax({
+                url: "Home/CurrentUser/" + $(this).val(),
+                cache: false,
+                type: "POST",
+                dataType: "html",
+
+                success: function (data, textStatus, XMLHttpRequest) {
+                    
+                }
+            });
+        });
+    </script>
+}

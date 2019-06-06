@@ -25,10 +25,9 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TaskId" Type="int" Nullable="false" />
-          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="Details" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Created" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="TaskUser">
           <Key>
@@ -117,11 +116,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TaskId" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" Nullable="false" />
           <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Task" Relationship="Self.FK_TaskComment_ToTask" FromRole="TaskComment" ToRole="Task" />
-          <NavigationProperty Name="TaskUser" Relationship="Self.FK_TaskComment_ToUser" FromRole="TaskComment" ToRole="TaskUser" />
+          <NavigationProperty Name="CreatedUser" Relationship="Self.FK_TaskComment_ToUser" FromRole="TaskComment" ToRole="TaskUser" />
           <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="TaskUser">
@@ -214,7 +212,6 @@
                 <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TaskId" ColumnName="TaskId" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="Details" ColumnName="Details" />
               </MappingFragment>

@@ -236,6 +236,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlExtensions.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -292,6 +293,7 @@
     <Content Include="Views\Task\Edit.cshtml" />
     <Content Include="Views\Task\Delete.cshtml" />
     <Content Include="Views\Task\Create.cshtml" />
+    <Content Include="Views\Task\AddComment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

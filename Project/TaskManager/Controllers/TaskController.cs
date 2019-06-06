@@ -43,6 +43,11 @@ namespace TaskManager.Controllers
         public ActionResult Details(int id)
         {
             ITask task = repository.GetTask(id);
+
+            var comments = repository.GetComments(task.ID).OrderByDescending(x => x.Created);
+
+            task.Comments = comments;
+
             return View(task);
         }
 
@@ -79,6 +84,9 @@ namespace TaskManager.Controllers
 
             ViewBag.UserSelection = users;
 
+            if (task.AssignedTo != null)
+                ((Task)task).AssignedUserID = task.AssignedTo.ID;
+
             return View(task);
         }
 
@@ -92,7 +100,8 @@ namespace TaskManager.Controllers
             if (task.AssignedUserID.Equals(0))
             {
                 task.AssignedTo = null;
-            } else
+            }
+            else
             {
                 task.AssignedTo = repository.GetUser(task.AssignedUserID);
             }
@@ -120,6 +129,22 @@ namespace TaskManager.Controllers
             repository.Save();
 
             return RedirectToAction("List");
+        }
+
+        public ActionResult AddComment(int id)
+        {
+            Comment comment = new Comment() { Task = repository.GetTask(id) };
+
+            if (Session["CurrentUser"] is int)
+                comment.CreatedBy = repository.GetUser((int)Session["CurrentUser"]);
+
+            return View(comment);
+        }
+
+        [HttpPost]
+        public ActionResult AddComment(int id, Comment comment)
+        {
+            return RedirectToAction("Details", new { id = id });
         }
 
     }

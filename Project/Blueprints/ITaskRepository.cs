@@ -16,6 +16,7 @@ namespace Blueprints
         void DeleteTask(int ID);
         void AddComment(int taskID, IComment comment);
         void DeleteComment(int ID);
+        IEnumerable<IComment> GetComments(int taskID);        
         IEnumerable<IUser> GetUsers();
         void AddUser(IUser user);
         void UpdateUser(IUser user);
